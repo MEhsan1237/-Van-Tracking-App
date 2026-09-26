@@ -11,6 +11,7 @@ class SafeVanApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<ThemeController>(
+      init: ThemeController(),
       builder: (themeCtrl) {
         return GetMaterialApp(
           title: 'SafeVan Transport Management',
