@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'app_routes.dart';
 import '../bindings/feature_bindings.dart';
 import '../../features/splash/views/splash_view.dart';
+import '../../features/onboarding/views/onboarding_view.dart';
+import '../../features/onboarding/bindings/onboarding_binding.dart';
 import '../../features/auth/views/login_view.dart';
 import '../../features/auth/views/register_view.dart';
 import '../../features/auth/views/email_verification_view.dart';
@@ -20,6 +22,11 @@ class AppPages {
     GetPage(
       name: AppRoutes.splash,
       page: () => const SplashView(),
+    ),
+    GetPage(
+      name: AppRoutes.onboarding,
+      page: () => const OnboardingView(),
+      binding: OnboardingBinding(),
     ),
     GetPage(
       name: AppRoutes.login,

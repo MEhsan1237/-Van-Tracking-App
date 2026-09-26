@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../auth/viewmodels/auth_viewmodel.dart';
+import '../../onboarding/services/onboarding_local_service.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -24,14 +25,24 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
     _fadeAnim = CurvedAnimation(parent: _animController, curve: Curves.easeIn);
     _animController.forward();
 
-    Future.delayed(const Duration(seconds: 2), () {
-      if (Get.isRegistered<AuthViewModel>()) {
-        final authVm = Get.find<AuthViewModel>();
-        if (authVm.currentUser.value == null) {
+    Future.delayed(const Duration(seconds: 2), () async {
+      final onboardingService = OnboardingLocalService();
+      final completed = await onboardingService.isOnboardingCompleted();
+
+      if (!completed) {
+        Get.offAllNamed('/onboarding');
+      } else {
+        if (Get.isRegistered<AuthViewModel>()) {
+          final authVm = Get.find<AuthViewModel>();
+          final cachedUser = authVm.currentUser.value;
+          if (cachedUser == null) {
+            Get.offAllNamed('/login');
+          } else {
+            await authVm.checkInitialSession();
+          }
+        } else {
           Get.offAllNamed('/login');
         }
-      } else {
-        Get.offAllNamed('/login');
       }
     });
   }
