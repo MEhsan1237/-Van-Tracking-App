@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "827307194573",
+    "project_id": "van-tracking-app-168bf",
+    "storage_bucket": "van-tracking-app-168bf.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827307194573:android:dab06d04cbcf6fa71a5184",
+        "android_client_info": {
+          "package_name": "com.example.school_van"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB7-PGHHHRbVPBrVVQ-to3YsaAedFJWIoo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
