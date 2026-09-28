@@ -4,6 +4,8 @@ import '../bindings/feature_bindings.dart';
 import '../../features/splash/views/splash_view.dart';
 import '../../features/onboarding/views/onboarding_view.dart';
 import '../../features/onboarding/bindings/onboarding_binding.dart';
+import '../../features/welcome/views/welcome_view.dart';
+import '../../features/welcome/bindings/welcome_binding.dart';
 import '../../features/auth/views/login_view.dart';
 import '../../features/auth/views/register_view.dart';
 import '../../features/auth/views/email_verification_view.dart';
@@ -27,6 +29,11 @@ class AppPages {
       name: AppRoutes.onboarding,
       page: () => const OnboardingView(),
       binding: OnboardingBinding(),
+    ),
+    GetPage(
+      name: AppRoutes.welcome,
+      page: () => const WelcomeView(),
+      binding: WelcomeBinding(),
     ),
     GetPage(
       name: AppRoutes.login,

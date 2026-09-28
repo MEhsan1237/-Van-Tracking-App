@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../app/routes/app_routes.dart';
 import '../services/onboarding_local_service.dart';
 import '../../auth/viewmodels/auth_viewmodel.dart';
 
@@ -43,10 +44,10 @@ class OnboardingViewModel extends GetxController {
       if (authVm.currentUser.value != null) {
         authVm.checkInitialSession();
       } else {
-        Get.offAllNamed('/login');
+        Get.offAllNamed(AppRoutes.welcome);
       }
     } else {
-      Get.offAllNamed('/login');
+      Get.offAllNamed(AppRoutes.welcome);
     }
   }
 

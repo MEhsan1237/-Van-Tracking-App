@@ -115,7 +115,7 @@ class AuthViewModel extends GetxController {
   Future<void> logout() async {
     await _authRepository.logout();
     currentUser.value = null;
-    Get.offAllNamed('/login');
+    Get.offAllNamed('/welcome');
   }
 
   void _navigateToRoleDashboard(UserModel user) {

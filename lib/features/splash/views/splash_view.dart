@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../app/routes/app_routes.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../auth/viewmodels/auth_viewmodel.dart';
 import '../../onboarding/services/onboarding_local_service.dart';
@@ -30,18 +31,18 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
       final completed = await onboardingService.isOnboardingCompleted();
 
       if (!completed) {
-        Get.offAllNamed('/onboarding');
+        Get.offAllNamed(AppRoutes.onboarding);
       } else {
         if (Get.isRegistered<AuthViewModel>()) {
           final authVm = Get.find<AuthViewModel>();
           final cachedUser = authVm.currentUser.value;
           if (cachedUser == null) {
-            Get.offAllNamed('/login');
+            Get.offAllNamed(AppRoutes.welcome);
           } else {
             await authVm.checkInitialSession();
           }
         } else {
-          Get.offAllNamed('/login');
+          Get.offAllNamed(AppRoutes.welcome);
         }
       }
     });
@@ -67,7 +68,8 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
         child: FadeTransition(
           opacity: _fadeAnim,
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Container(
                 padding: EdgeInsets.all(size.width * 0.06),
@@ -90,7 +92,7 @@ class _SplashViewState extends State<SplashView> with SingleTickerProviderStateM
               ),
               SizedBox(height: size.height * 0.03),
               Text(
-                'SAFEVAN',
+                'SAFE VAN',
                 style: TextStyle(
                   fontSize: (size.width * 0.08).clamp(24.0, 36.0),
                   fontWeight: FontWeight.w900,
